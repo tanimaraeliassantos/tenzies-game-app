@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Die from "./Die";
 
-function App() {
+// Write a function that returns an array of 10 random numbers between 1-6 inclusive.
+// Log the array of numbers to the console for now.
+
+export default function App() {
+  function allNewDice() {
+    // new array to hold numbers
+    // loop 10 times
+    // push a random number from 1-6 to my array
+    // return array
+    const newDice = [];
+    for (let i = 0; i < 10; i++) {
+      newDice.push(Math.ceil(Math.random() * 6));
+    }
+    return newDice;
+  }
+  console.log(allNewDice());
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <div className="dice-container">
+        <Die value="1" />
+        <Die value="2" />
+        <Die value="3" />
+        <Die value="4" />
+        <Die value="5" />
+        <Die value="6" />
+        <Die value="1" />
+        <Die value="2" />
+        <Die value="3" />
+        <Die value="4" />
+      </div>
+    </main>
   );
 }
-
-export default App;
