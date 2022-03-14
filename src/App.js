@@ -16,6 +16,13 @@ import { nanoid } from "nanoid";
 // Add conditional styling to the Die component
 // If it's held, its background color changes to light green
 // Remember to let the Die component know if it's being held or not
+//Create function holdDice that takes id as a parameter
+// Console.log(id)
+// Pass that function to each instance of the Die component
+// When it is clicked, it logs its own ID
+// Update holdDice function to flip the isHeld based on the ip prop
+//
+//
 //
 
 export default function App() {
@@ -43,8 +50,21 @@ export default function App() {
     setDice(allNewDice());
   }
 
+  function holdDice(id) {
+    setDice((oldDice) =>
+      oldDice.map((die) => {
+        return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
+      })
+    );
+  }
+
   const diceElements = dice.map((die) => (
-    <Die value={die.value} key={die.id} isHeld={die.isHeld} />
+    <Die
+      value={die.value}
+      key={die.id}
+      isHeld={die.isHeld}
+      holdDice={() => holdDice(die.id)}
+    />
   ));
 
   return (
